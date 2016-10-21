@@ -55,7 +55,7 @@ public class FileSplitter {
         long lnum = new Long(blockNumber).longValue();
 
         this.srcFile = this.checkFileExists(f, false);
-        this.blockSize = len / lnum;
+        this.blockSize = (len%lnum ==0) ? len / lnum : (len / (lnum -1));
         this.blockNum = blockNumber;
         this.targetDir = this.checkFileExists(targetDir, true);
     }
@@ -265,4 +265,3 @@ public class FileSplitter {
         this.suffix = suffix;
     }
 }
-
